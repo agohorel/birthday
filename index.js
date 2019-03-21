@@ -50,15 +50,31 @@ let index = 0;
 canvas.innerText = asciiArt;
 
 setInterval( ()=> {
-    if (index > asciiArt.length) index = 0;
+
+    swapChars("*");
+
+    // // skip whitespace
+    // if (/\S/.test(asciiArt[index])) {
+    //     canvas.innerText = replaceAt(asciiArt, index, randomChar());
+    // } 
+}, 50);
+
+function getLocs(string, target){
+    let arr = [];
+    for (let i = 0; i < string.length; i++){
+        if (string[i] === target){
+            arr.push(i);
+        }
+    }
+    return arr;
+}
+
+function swapChars(target){
+    let locs = getLocs(asciiArt, target);
+    canvas.innerText = replaceAt(asciiArt, locs[index], randomChar());
     index++;
-
-    // skip whitespace
-    if (/\S/.test(asciiArt[index])) {
-        canvas.innerText = replaceAt(asciiArt, index, randomChar());
-    } 
-}, 1);
-
+    if (index > locs.length - 1) index = 0;
+}
 
 function randomChar(){
     let chars = ["!", "@", "#", "$", "%", "^", "*", "+", "=", "_"];
