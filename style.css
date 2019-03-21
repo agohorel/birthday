@@ -10,6 +10,12 @@ body {
     font-family: "Roboto Mono", monospace;
 }
 
+h1 {
+    background-image: linear-gradient(to right, #333, #555);
+	-webkit-background-clip: text;
+    color: transparent;
+}
+
 .container {
     display: flex;
     flex-direction: column;
