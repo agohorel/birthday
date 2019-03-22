@@ -8,12 +8,23 @@
 
 body {
     font-family: "Roboto Mono", monospace;
+    overflow: hidden;
 }
 
 h1 {
-    background-image: linear-gradient(to right, #333, #555);
+    background-image: linear-gradient(to right, #eee, #fff);
 	-webkit-background-clip: text;
     color: transparent;
+    animation: wiggle 1s ease-in-out both infinite 1.25s;
+}
+
+.heading {
+    animation: slideInFromTop 1.25s ease;
+}
+
+.subheading {
+    animation: slideInFromBottom 1s ease backwards 1.25s;
+    margin-top: 4vh;
 }
 
 .container {
@@ -21,7 +32,121 @@ h1 {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 100vw;
-    height: 100vh;
-    background-image: linear-gradient(#e86a04, #bc233a);
+    min-width: 100vw;
+    min-height: 100vh;
+    background-image: linear-gradient(to bottom right, #e86a04, #bc233a);
+}
+
+.ascii {
+    margin-left: -64px;
+    font-size: 16px;
+    animation: slideInFromBottom 1s ease, oscColor 5s alternate infinite;
+}
+
+@media only screen and (max-width: 1200px) {
+    .ascii {
+        margin-left: -56px;
+        font-size: 14px;
+    }
+
+    h1 {
+        font-size: 30px;
+    }
+
+    h3 {
+        font-size: 16px;
+    }
+}
+
+@media only screen and (max-width: 900px) {
+    .ascii {
+        margin-left: -48px;
+        font-size: 12px;
+    }
+
+    h1 {
+        font-size: 24px;
+    }
+
+    h3 {
+        font-size: 14px;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .ascii {
+        margin-left: -34px;
+        font-size: 10px;
+    }
+
+    h1 {
+        font-size: 18px;
+    }
+
+    h3 {
+        font-size: 12px;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    .ascii {
+        margin-left: -24px;
+        font-size: 8px;
+    }
+
+    h1 {
+        font-size: 16px;
+    }
+
+    h3 {
+        font-size: 11px;
+    }
+}
+
+@keyframes slideInFromTop {
+    0% {
+        transform: translateY(-500px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInFromBottom {
+    0% {
+        transform: translateY(100vh);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
+
+@keyframes wiggle {
+    0% {
+        transform: rotate(0deg)
+    }
+
+    25% {
+        transform: rotate(-.5deg)
+    }
+
+    50% {
+        transform: rotate(.5deg)
+    }
+
+    100% {
+        transform: rotate(0deg)
+    }
+}
+
+@keyframes oscColor {
+    0% {
+        color: #000;
+    }
+
+    100% {
+        color: #fff;
+    }
 }
